@@ -1,0 +1,189 @@
+<!--
+  Generated template for the CriarfichaPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Criar Ficha
+      <br/>Avaliação</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <form [formGroup]="todo" (ngSubmit)="cadficha()">
+
+    <ion-item>
+      <ion-label stacked>Peso</ion-label>
+      <ion-input type="text" formControlName="peso"></ion-input>
+    </ion-item>
+    
+    <ion-item class="no-line error" *ngIf="!todo.controls.peso.valid  && (todo.controls.peso.dirty || submitAttempt) && !todo.controls.peso.pending">
+        <p *ngIf="todo.value.peso != ''" style="color: red;">Somento Números!</p>
+        <p *ngIf="todo.value.peso == ''" style="color: red;">Campo Obrigatório!</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Altura</ion-label>
+      <ion-input type="text" formControlName="altura"></ion-input>
+    </ion-item>
+    
+    <ion-item class="no-line error" *ngIf="!todo.controls.altura.valid  && (todo.controls.altura.dirty || submitAttempt) && !todo.controls.altura.pending">
+        <p *ngIf="todo.value.altura != ''" style="color: red;">Somento Números!</p>
+        <p *ngIf="todo.value.altura == ''" style="color: red;">Campo Obrigatório!</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Percentual Gordura</ion-label>
+      <ion-input type="text" formControlName="gordura"></ion-input>
+    </ion-item>
+    
+    <ion-item class="no-line error" *ngIf="!todo.controls.gordura.valid  && (todo.controls.gordura.dirty || submitAttempt) && !todo.controls.gordura.pending">
+        <p *ngIf="todo.value.gordura != ''" style="color: red;">Somento Números!</p>
+        <p *ngIf="todo.value.gordura == ''" style="color: red;">Campo Obrigatório!</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Torax</ion-label>
+      <ion-input type="text" formControlName="torax"></ion-input>
+    </ion-item>
+    
+    <ion-item class="no-line error" *ngIf="!todo.controls.torax.valid  && (todo.controls.torax.dirty || submitAttempt) && !todo.controls.torax.pending">
+        <p *ngIf="todo.value.torax != ''" style="color: red;">Somento Números!</p>
+        <p *ngIf="todo.value.torax == ''" style="color: red;">Campo Obrigatório!</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Peito</ion-label>
+      <ion-input type="text" formControlName="peito"></ion-input>
+    </ion-item>
+    
+    <ion-item class="no-line error" *ngIf="!todo.controls.peito.valid  && (todo.controls.peito.dirty || submitAttempt) && !todo.controls.peito.pending">
+        <p *ngIf="todo.value.peito != ''" style="color: red;">Somento Números!</p>
+        <p *ngIf="todo.value.peito == ''" style="color: red;">Campo Obrigatório!</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Cintura</ion-label>
+      <ion-input type="text" formControlName="cintura"></ion-input>
+    </ion-item>
+    
+    <ion-item class="no-line error" *ngIf="!todo.controls.cintura.valid  && (todo.controls.cintura.dirty || submitAttempt) && !todo.controls.cintura.pending">
+        <p *ngIf="todo.value.cintura != ''" style="color: red;">Somento Números!</p>
+        <p *ngIf="todo.value.cintura == ''" style="color: red;">Campo Obrigatório!</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Abdomen</ion-label>
+      <ion-input type="text" formControlName="abdomen"></ion-input>
+    </ion-item>
+    
+    <ion-item class="no-line error" *ngIf="!todo.controls.abdomen.valid  && (todo.controls.abdomen.dirty || submitAttempt) && !todo.controls.abdomen.pending">
+        <p *ngIf="todo.value.abdomen != ''" style="color: red;">Somento Números!</p>
+        <p *ngIf="todo.value.abdomen == ''" style="color: red;">Campo Obrigatório!</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Quadril</ion-label>
+      <ion-input type="text" formControlName="quadril"></ion-input>
+    </ion-item>
+    
+    <ion-item class="no-line error" *ngIf="!todo.controls.quadril.valid  && (todo.controls.quadril.dirty || submitAttempt) && !todo.controls.quadril.pending">
+        <p *ngIf="todo.value.quadril != ''" style="color: red;">Somento Números!</p>
+        <p *ngIf="todo.value.quadril == ''" style="color: red;">Campo Obrigatório!</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Antebraço Direito</ion-label>
+      <ion-input type="text" formControlName="antebracod"></ion-input>
+    </ion-item>
+    
+    <ion-item class="no-line error" *ngIf="!todo.controls.antebracod.valid  && (todo.controls.antebracod.dirty || submitAttempt) && !todo.controls.antebracod.pending">
+        <p *ngIf="todo.value.antebracod != ''" style="color: red;">Somento Números!</p>
+        <p *ngIf="todo.value.antebracod == ''" style="color: red;">Campo Obrigatório!</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Antebraço Esquerdo</ion-label>
+      <ion-input type="text" formControlName="antebracoe"></ion-input>
+    </ion-item>
+    
+    <ion-item class="no-line error" *ngIf="!todo.controls.antebracoe.valid  && (todo.controls.antebracoe.dirty || submitAttempt) && !todo.controls.antebracoe.pending">
+        <p *ngIf="todo.value.antebracoe != ''" style="color: red;">Somento Números!</p>
+        <p *ngIf="todo.value.antebracoe == ''" style="color: red;">Campo Obrigatório!</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Braço Direito</ion-label>
+      <ion-input type="text" formControlName="bracod"></ion-input>
+    </ion-item>
+    
+    <ion-item class="no-line error" *ngIf="!todo.controls.bracod.valid  && (todo.controls.bracod.dirty || submitAttempt) && !todo.controls.bracod.pending">
+        <p *ngIf="todo.value.bracod != ''" style="color: red;">Somento Números!</p>
+        <p *ngIf="todo.value.bracod == ''" style="color: red;">Campo Obrigatório!</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Braço Esquerdo</ion-label>
+      <ion-input type="text" formControlName="bracoe"></ion-input>
+    </ion-item>
+    
+    <ion-item class="no-line error" *ngIf="!todo.controls.bracoe.valid  && (todo.controls.bracoe.dirty || submitAttempt) && !todo.controls.bracoe.pending">
+        <p *ngIf="todo.value.bracoe != ''" style="color: red;">Somento Números!</p>
+        <p *ngIf="todo.value.bracoe == ''" style="color: red;">Campo Obrigatório!</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Coxa Direita</ion-label>
+      <ion-input type="text" formControlName="coxad"></ion-input>
+    </ion-item>
+    
+    <ion-item class="no-line error" *ngIf="!todo.controls.coxad.valid  && (todo.controls.coxad.dirty || submitAttempt) && !todo.controls.coxad.pending">
+        <p *ngIf="todo.value.coxad != ''" style="color: red;">Somento Números!</p>
+        <p *ngIf="todo.value.coxad == ''" style="color: red;">Campo Obrigatório!</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Coxa Esquerda</ion-label>
+      <ion-input type="text" formControlName="coxae"></ion-input>
+    </ion-item>
+    
+    <ion-item class="no-line error" *ngIf="!todo.controls.coxae.valid  && (todo.controls.coxae.dirty || submitAttempt) && !todo.controls.coxae.pending">
+        <p *ngIf="todo.value.coxae != ''" style="color: red;">Somento Números!</p>
+        <p *ngIf="todo.value.coxae == ''" style="color: red;">Campo Obrigatório!</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Panturilha Direita</ion-label>
+      <ion-input type="text" formControlName="paturilhad"></ion-input>
+    </ion-item>
+    
+    <ion-item class="no-line error" *ngIf="!todo.controls.paturilhad.valid  && (todo.controls.paturilhad.dirty || submitAttempt) && !todo.controls.paturilhad.pending">
+        <p *ngIf="todo.value.paturilhad != ''" style="color: red;">Somento Números!</p>
+        <p *ngIf="todo.value.paturilhad == ''" style="color: red;">Campo Obrigatório!</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Panturilha Esquerda</ion-label>
+      <ion-input type="text" formControlName="paturilhae"></ion-input>
+    </ion-item>
+    
+    <ion-item class="no-line error" *ngIf="!todo.controls.paturilhae.valid  && (todo.controls.paturilhae.dirty || submitAttempt) && !todo.controls.paturilhae.pending">
+        <p *ngIf="todo.value.paturilhae != ''" style="color: red;">Somento Números!</p>        
+        <p *ngIf="todo.value.paturilhae == ''" style="color: red;">Campo Obrigatório!</p>
+    </ion-item>
+
+  </form>
+
+  <button ion-button outline round class="btLogin" type="submit" [disabled]="!todo.valid" (click)="salvar()">Salvar</button>
+  <br />
+
+  <button ion-button outline round class="btLogin" (click)="cancelar()">Cancelar</button>
+  <br />
+
+</ion-content>

@@ -9,26 +9,82 @@ import { ListPage } from '../pages/list/list';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+
+import { WelcomePage } from '../pages/welcome/welcome';
+import { LoginPage } from '../pages/login/login';
+import { RegisterPage } from '../pages/register/register';
+import { UsuarioPage } from '../pages/usuario/usuario';
+import { FichaPage } from '../pages/ficha/ficha';
+import { CriarfichaPage } from '../pages/criarficha/criarficha';
+import { VisualizarfichaPage } from '../pages/visualizarficha/visualizarficha';
+import { TreinamentoPage } from '../pages/treinamento/treinamento';
+import { CriartreinoPage } from "../pages/criartreino/criartreino";
+import { VisualizartreinoPage } from "../pages/visualizarTreino/visualizarTreino";
+import { ComecartreinoPage } from "../pages/comecartreino/comecartreino";
+import { ExecutartreinoPage } from "../pages/executartreino/executartreino";
+import { CronometroPage } from "../pages/cronometro/cronometro";
+import { DesenvolvimentoPage } from "../pages/desenvolvimento/desenvolvimento";
+import { AcessarPage } from"../pages/acessar/acessar";
+
+import { NgCalendarModule } from "ionic2-calendar";
+import { RestProvider } from '../providers/rest/rest';
+
+import 'rxjs/add/operator/map';
+import { HttpModule } from '@angular/http';
+
 @NgModule({
   declarations: [
     MyApp,
+    WelcomePage,
     HomePage,
-    ListPage
+    ListPage,
+    LoginPage,
+    RegisterPage,
+    UsuarioPage,
+    FichaPage,
+    CriarfichaPage,
+    VisualizarfichaPage,
+    TreinamentoPage,
+    CriartreinoPage,
+    VisualizartreinoPage,
+    ComecartreinoPage,
+    ExecutartreinoPage,
+    CronometroPage,
+    DesenvolvimentoPage,
+    AcessarPage
   ],
   imports: [
     BrowserModule,
+    NgCalendarModule,
+    HttpModule,
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+    WelcomePage,
     HomePage,
-    ListPage
+    ListPage,
+    LoginPage,
+    RegisterPage,
+    UsuarioPage,
+    FichaPage,
+    CriarfichaPage,
+    VisualizarfichaPage,
+    TreinamentoPage,
+    CriartreinoPage,
+    VisualizartreinoPage,
+    ComecartreinoPage,
+    ExecutartreinoPage,
+    CronometroPage,
+    DesenvolvimentoPage,
+    AcessarPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    RestProvider
   ]
 })
 export class AppModule {}
