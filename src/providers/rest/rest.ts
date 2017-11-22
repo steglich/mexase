@@ -19,23 +19,7 @@ export class RestProvider {
   constructor(public http: Http) {
   }
 
-  createUsuario(email: string, senha: string, nome: string) {
-    return new Promise((resolve, reject) => {
-      var data = {
-        email: email,
-        senha: senha,
-        nome: nome
-      };
-
-      this.http.post(this.apiUrl + 'usuarios/create', data)
-        .subscribe((result: any) => {
-          resolve(result.json())
-        },
-        (error) => {
-          reject(error.json());
-        })
-    });
-  }
+  /*#################################################################### Login ##################################################*/
 
   login(email: string, senha: string) {
     return new Promise((resolve, reject) => {
@@ -51,6 +35,26 @@ export class RestProvider {
         (error) => {
           reject(error.json());
           this.emailValid = null;
+        })
+    });
+  }
+
+  /*#################################################################### Usuário ##################################################*/
+
+  createUsuario(email: string, senha: string, nome: string) {
+    return new Promise((resolve, reject) => {
+      var data = {
+        email: email,
+        senha: senha,
+        nome: nome
+      };
+
+      this.http.post(this.apiUrl + 'usuarios/create', data)
+        .subscribe((result: any) => {
+          resolve(result.json())
+        },
+        (error) => {
+          reject(error.json());
         })
     });
   }
@@ -93,5 +97,76 @@ export class RestProvider {
         })
     });
   }
+
+  /*#################################################################### Ficha de Avaliação ##################################################*/
+
+  // createFicha(peso: any, altura: any, gordura: any, peito: any, cintura: any, quadril: any, anteBracoDireito: any, anteBracoEsquerdo: any, 
+  // bracoDireito: any, bracoEsquerdo: any, coxaDireita: any, coxaEsquerda: any, pantuDireita: any, pantuEsquerda: any, reavaliacao: any, email: any) {
+  // return new Promise((resolve, reject) => {
+  // var data = {
+  //   peso: peso,
+  //   altura: altura,
+  //   gordura: gordura,
+  //   peito: peito,
+  //   cintura: cintura,
+  //   quadril: quadril,
+  //   anteBracoDireito: anteBracoDireito,
+  //   anteBracoEsquerdo: anteBracoEsquerdo,
+  //   bracoDireito: bracoDireito,
+  //   bracoEsquerdo: bracoEsquerdo,
+  //   coxaDireita: coxaDireita,
+  //   coxaEsquerda: coxaEsquerda,
+  //   pantuDireita: pantuDireita,
+  //   pantuEsquerda: pantuEsquerda,
+  //   reavaliacao: reavaliacao,
+  //   email: email
+  createFicha(ficha: any) {
+    return new Promise((resolve, reject) => {
+      //for (var i = 0; i < 1; i++) {
+        var data = {
+          "peso": ficha[0],
+          "altura": ficha[1],
+          "gordura": ficha[2],
+          "peito": ficha[3],
+          "cintura": ficha[4],
+          "quadril": ficha[5],
+          'anteBracoDireito': ficha[6],
+          "anteBracoEsquerdo": ficha[7],
+          "bracoDireito": ficha[8],
+          "bracoEsquerdo": ficha[9],
+          "coxaDireita": ficha[10],
+          "coxaEsquerda": ficha[11],
+          "pantuDireita": ficha[12],
+          "pantuEsquerda": ficha[13],
+          "reavaliacao": ficha[14],
+          "email": ficha[15]
+      };
+
+      this.http.post(this.apiUrl + 'ficha/create/avaliacao', data)
+        .subscribe((result: any) => {
+          resolve(result.json())
+        },
+        (error) => {
+          reject(error.json());
+        })
+    });
+  }
+
+  getFicha(email: string) {
+    return new Promise((resolve, reject) => {
+      var data = {
+        email: email
+      };
+
+      this.http.post(this.apiUrl + 'ficha/getEmail', data)
+        .subscribe((result: any) => {
+          resolve(result.json());
+        },
+        (error) => {
+          reject(error.json());
+        })
+    });
+  }
+
 
 }

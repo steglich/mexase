@@ -10,7 +10,7 @@ import { IonicPage, NavController, NavParams, ToastController, MenuController } 
 
 //import { MyApp } from "../../app/app.component";
 
-import {FichaPage} from "../ficha/ficha";
+import {CriarfichaPage} from "../criarficha/criarficha";
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { RestProvider } from '../../providers/rest/rest';
 
@@ -50,7 +50,7 @@ export class RegisterPage {
   createUsuario(){
     this.restProvider.createUsuario(this.model.email, this.model.senha, this.model.nome)
     .then((result: any) => {
-      this.navCtrl.setRoot(FichaPage);
+      this.navCtrl.setRoot(CriarfichaPage);
        this.toast.create({ message: 'Ususário cadastrado com sucesso!' + this.restProvider.emailValid, position: 'botton', duration: 3000 }).present();
     })
     .catch((error: any) => {
