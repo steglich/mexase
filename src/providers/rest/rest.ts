@@ -158,7 +158,7 @@ export class RestProvider {
         email: email
       };
 
-      this.http.post(this.apiUrl + 'ficha/getEmail', data)
+      this.http.post(this.apiUrl + 'ficha/email', data)
         .subscribe((result: any) => {
           resolve(result.json());
         },
@@ -167,6 +167,39 @@ export class RestProvider {
         })
     });
   }
+  
+    updateFicha(ficha: any) {
+      return new Promise((resolve, reject) => {
+  
+        var data = {
+          "peso": ficha[0],
+          "altura": ficha[1],
+          "gordura": ficha[2],
+          "peito": ficha[3],
+          "cintura": ficha[4],
+          "quadril": ficha[5],
+          'anteBracoDireito': ficha[6],
+          "anteBracoEsquerdo": ficha[7],
+          "bracoDireito": ficha[8],
+          "bracoEsquerdo": ficha[9],
+          "coxaDireita": ficha[10],
+          "coxaEsquerda": ficha[11],
+          "pantuDireita": ficha[12],
+          "pantuEsquerda": ficha[13],
+          "reavaliacao": ficha[14],
+          "email": ficha[15]
+      };
+  
+        this.http.put(this.apiUrl + 'ficha/update', data)
+          .subscribe((result: any) => {
+            resolve(result.json())
+            //this.emailValid = result.email;
+          },
+          (error) => {
+            reject(error.json());
+          })
+      });
+    }
 
 
 }

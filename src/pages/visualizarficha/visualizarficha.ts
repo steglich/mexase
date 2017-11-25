@@ -66,7 +66,7 @@ export class VisualizarfichaPage {
         this.model.coxaEsquerda = result.coxaEsquerda,
         this.model.pantuDireita = result.pantuDireita,
         this.model.pantuEsquerda = result.pantuEsquerda,
-        this.model.reavaliacao = result.reavaliacao
+        this.model.reavaliacao = result.avaliacao.reavaliacao
       })
       .catch((error: any) => {
         this.toast.create({ message: 'Erro ao recupara ficha: ' + error, position: 'botton', duration: 5000 }).present();
@@ -90,7 +90,7 @@ export class VisualizarfichaPage {
           text: 'Sim',
           handler: data => {
 
-            this.model.reavaliacao = data.data;
+            //this.model.reavaliacao = data.data;
 
             var fichas: string[] = [
               this.model.peso,
@@ -111,13 +111,13 @@ export class VisualizarfichaPage {
               this.restProvider.emailValid
             ];
 
-            this.restProvider.createFicha(fichas)
+            this.restProvider.updateFicha(fichas)
               .then((result: any) => {
                 this.navCtrl.setRoot(HomePage);
-                this.toast.create({ message: 'Ficha cadastrado com sucesso!', position: 'botton', duration: 3000 }).present();
+                this.toast.create({ message: 'Ficha de atualização atualizada com sucesso!', position: 'botton', duration: 3000 }).present();
               })
               .catch((error: any) => {
-                this.toast.create({ message: 'Erro ao Criar Ficha: ', position: 'botton', duration: 5000 }).present();
+                this.toast.create({ message: 'Erro ao atualizar Ficha de avaliação: ', position: 'botton', duration: 5000 }).present();
               })
 
           }

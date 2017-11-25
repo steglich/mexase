@@ -160,7 +160,7 @@
   
       <ion-item>
         <ion-label stacked>Data Reavaliação</ion-label>
-        <ion-input type="Data" formControlName="reavaliacao" [(ngModel)]="model.reavaliacao"></ion-input>
+        <ion-datetime  displayFormat="DD/MM/YYYY" formControlName="reavaliacao" [(ngModel)]="model.reavaliacao"></ion-datetime >
       </ion-item>
       
       <ion-item class="no-line error" *ngIf="!todo.controls.reavaliacao.valid  && (todo.controls.reavaliacao.dirty || submitAttempt) && !todo.controls.reavaliacao.pending">
