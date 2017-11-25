@@ -100,26 +100,6 @@ export class RestProvider {
 
   /*#################################################################### Ficha de Avaliação ##################################################*/
 
-  // createFicha(peso: any, altura: any, gordura: any, peito: any, cintura: any, quadril: any, anteBracoDireito: any, anteBracoEsquerdo: any, 
-  // bracoDireito: any, bracoEsquerdo: any, coxaDireita: any, coxaEsquerda: any, pantuDireita: any, pantuEsquerda: any, reavaliacao: any, email: any) {
-  // return new Promise((resolve, reject) => {
-  // var data = {
-  //   peso: peso,
-  //   altura: altura,
-  //   gordura: gordura,
-  //   peito: peito,
-  //   cintura: cintura,
-  //   quadril: quadril,
-  //   anteBracoDireito: anteBracoDireito,
-  //   anteBracoEsquerdo: anteBracoEsquerdo,
-  //   bracoDireito: bracoDireito,
-  //   bracoEsquerdo: bracoEsquerdo,
-  //   coxaDireita: coxaDireita,
-  //   coxaEsquerda: coxaEsquerda,
-  //   pantuDireita: pantuDireita,
-  //   pantuEsquerda: pantuEsquerda,
-  //   reavaliacao: reavaliacao,
-  //   email: email
   createFicha(ficha: any) {
     return new Promise((resolve, reject) => {
       //for (var i = 0; i < 1; i++) {
@@ -202,4 +182,5 @@ export class RestProvider {
     }
 
 
+  /*#################################################################### Ficha de Avaliação ##################################################*/
 }
