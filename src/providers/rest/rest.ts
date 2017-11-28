@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { Observable } from 'rxjs/Observable';
+//import { Observable } from 'rxjs/Observable';
 //import { Response } from '@angular/http';
 
 /*
@@ -15,6 +15,7 @@ export class RestProvider {
   public apiUrl = 'http://localhost:57896/api/';
 
   public emailValid: string;
+  public treinoTeste: string;
 
   constructor(public http: Http) {
   }
@@ -182,5 +183,46 @@ export class RestProvider {
     }
 
 
-  /*#################################################################### Ficha de Avaliação ##################################################*/
+  /*#################################################################### Treino ##################################################*/
+
+  createTreino(treinos: any) {
+    return new Promise((resolve, reject) => {
+      var data = {
+        "treino": treinos[0],
+        "email": treinos[1]
+      };
+
+      this.http.post(this.apiUrl + 'treino/create', data)
+        .subscribe((result: any) => {
+          resolve(result.json())
+        },
+        (error) => {
+          reject(error.json());
+        })
+    });
+  }
+  
+  
+    /*#################################################################### Exercicio ##################################################*/
+  
+
+    createExercicio(exercicios: any) {
+      return new Promise((resolve, reject) => {
+        var data = {
+          "exercicio": exercicios[0],
+          "repeticao": exercicios[1],
+          "carga": exercicios[2],
+          "email": exercicios[3]
+        };
+  
+        this.http.post(this.apiUrl + 'evolucaoTreino/create', data)
+          .subscribe((result: any) => {
+            resolve(result.json())
+          },
+          (error) => {
+            reject(error.json());
+          })
+      });
+    }
+
 }

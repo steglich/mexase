@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
 
 /**
  * Generated class for the CriartreinoPage page.
@@ -8,7 +8,8 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
  * Ionic pages and navigation.
  */
 
- import {TreinamentoPage} from "../treinamento/treinamento";
+import { TreinamentoPage } from "../treinamento/treinamento";
+import { RestProvider } from '../../providers/rest/rest';
 
 @IonicPage()
 @Component({
@@ -16,12 +17,14 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
   templateUrl: 'criartreino.html',
 })
 export class CriartreinoPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
+  itens: string[];
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController,
+    public restProvider: RestProvider, public toast: ToastController) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CriartreinoPage');
+this.lista(this.restProvider.treinoTeste);
   }
 
   salvar() {
@@ -62,14 +65,55 @@ export class CriartreinoPage {
 
   }
 
-  items = [
-    'Supino Reto',
-    'Remada Sentado',
-    'Cadeira Extensora',
-    'Rosca Inversa',
-    'Corda',
-    'Elevação Frontal'
-  ];
+  lista(teste: any){
+    switch (teste) {
+      case "Braço":
+        this.itens = [
+          'Supino Reto',
+          'Remada Sentado',
+          'Cadeira Extensora',
+          'Rosca Inversa',
+          'Corda',
+          'Elevação Frontal'
+        ]
+        break;
+
+      case "Costa":
+        this.itens = [
+          'Remada Sentado',
+          'Cadeira Extensora',
+          'Rosca Inversa',
+          'Corda',
+          'Elevação Frontal'
+        ]
+        break;
+
+      case "Perna":
+        this.itens = [
+          'Agachamento',
+          'Remada Sentado',
+          'Cadeira Extensora',
+          'Rosca Inversa',
+          'Corda',
+          'Elevação Frontal'
+        ]
+        break;
+
+      case "Abdomem":
+        this.itens = [
+          'Abdominal',
+          'Remada Sentado',
+          'Cadeira Extensora',
+          'Rosca Inversa',
+          'Corda',
+          'Elevação Frontal'
+        ]
+        break;
+
+      default:
+        break;
+    }
+  }
 
   itemSelected(item: string) { // lista de exercícios
 
@@ -98,7 +142,16 @@ export class CriartreinoPage {
         {
           text: 'Salvar',
           handler: data => {
-            console.log('Saved clicked');
+            
+            var exercicios : string[] = [item, data.repeticao, data.carga, this.restProvider.emailValid];
+    
+            this.restProvider.createExercicio(exercicios)
+            .then((result: any) => {
+              this.toast.create({ message: 'Exercício cadastrado com sucesso!', position: 'botton', duration: 3000 }).present();
+            })
+            .catch((error: any) => {
+              this.toast.create({ message: 'Erro ao Logar: ' + error, position: 'botton', duration: 5000 }).present();
+            })
           }
         }
       ]

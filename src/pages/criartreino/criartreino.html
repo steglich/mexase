@@ -21,13 +21,15 @@
   <br/>
 
   <ion-list inset>
-    <button ion-item *ngFor="let item of items" (click)="itemSelected(item)">
+    <button ion-item *ngFor="let item of itens" (click)="itemSelected(item)">
       {{ item }}
     </button>
   </ion-list>
 
-  <button ion-button outline round class="btLogin" (click)="salvar()">Salvar</button>
-  <button ion-button outline round class="btLogin" (click)="cancelar()">Cancelar</button>
+  <ion-fab bottom right>
+  <button ion-fab (click)="salvar()">Salvar</button></ion-fab>
+  <ion-fab bottom left>
+  <button ion-fab (click)="cancelar()"><ion-icon name="md-arrow-back"></ion-icon></button></ion-fab>
 
 
 </ion-content>

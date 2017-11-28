@@ -150,7 +150,7 @@
   
       <ion-item>
         <ion-label stacked>Panturilha Esquerda</ion-label>
-        <ion-input type="text" formControlName="pantuEsquerda" [(ngModel)]="model.pantuEsquerda"></ion-input>
+        <ion-input type="text" clearInput formControlName="pantuEsquerda" [(ngModel)]="model.pantuEsquerda"></ion-input>
       </ion-item>
       
       <ion-item class="no-line error" *ngIf="!todo.controls.pantuEsquerda.valid  && (todo.controls.pantuEsquerda.dirty || submitAttempt) && !todo.controls.pantuEsquerda.pending">
@@ -159,7 +159,7 @@
       </ion-item>
   
       <ion-item>
-        <ion-label stacked>Data Reavaliação</ion-label>
+        <ion-label color="primary" stacked>Data Reavaliação</ion-label>
         <ion-datetime  displayFormat="DD/MM/YYYY" formControlName="reavaliacao" [(ngModel)]="model.reavaliacao"></ion-datetime >
       </ion-item>
       

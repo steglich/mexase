@@ -55,7 +55,7 @@ export class RegisterPage {
        this.toast.create({ message: 'Ususário cadastrado com sucesso!' + this.restProvider.emailValid, position: 'botton', duration: 3000 }).present();
     })
     .catch((error: any) => {
-        this.toast.create({ message: 'Erro ao Logar: ' , position: 'botton', duration: 5000 }).present();
+        this.toast.create({ message: error , position: 'botton', duration: 5000 }).present();
     })
   }
 

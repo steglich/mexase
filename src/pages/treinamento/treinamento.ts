@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
 
 /**
  * Generated class for the TreinamentoPage page.
@@ -10,6 +10,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import {VisualizartreinoPage} from "../visualizarTreino/visualizarTreino";
 import {CriartreinoPage} from "../criartreino/criartreino";
+import { RestProvider } from '../../providers/rest/rest';
 
 @IonicPage()
 @Component({
@@ -17,8 +18,10 @@ import {CriartreinoPage} from "../criartreino/criartreino";
   templateUrl: 'treinamento.html',
 })
 export class TreinamentoPage {
+  model: treino;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController,
+    public restProvider: RestProvider, public toast: ToastController,) {
   }
 
   ionViewDidLoad() {
@@ -26,7 +29,63 @@ export class TreinamentoPage {
   }
 
   criartreino(){
-    this.navCtrl.setRoot(CriartreinoPage);
+
+    let prompt = this.alertCtrl.create({
+      title: "Treino",
+      message: "Selecione o Treino que deseja criar.",
+      inputs: [
+        {
+          type: "radio",
+          label: "Braço",
+          value: "Braço"
+        },
+        {
+          type: "radio",
+          label: "Costa",
+          value: "Costa"
+        },
+        {
+          type: "radio",
+          label: "Perna",
+          value: "Perna"
+        },
+        {
+          type: "radio",
+          label: "Abdomem",
+          value: "Abdomem"
+        },
+      ],
+      buttons: [
+        {
+          text: 'Cancelar',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Criar',
+          handler: data => {
+            //console.log('Teste Radio: ', data);
+            //this.model.treino = data;
+
+            var treinos : string[] = [data, this.restProvider.emailValid];
+
+            this.restProvider.createTreino(treinos)
+            .then((result: any) => {
+              this.toast.create({ message: 'Treino cadastrado com sucesso!', position: 'botton', duration: 3000 }).present();
+              this.restProvider.treinoTeste = data;
+              this.navCtrl.setRoot(CriartreinoPage);
+            })
+            .catch((error: any) => {
+              this.toast.create({ message: 'Erro ao Logar: ' + error, position: 'botton', duration: 5000 }).present();
+            })
+            
+          }
+        }
+      ]
+    });
+    prompt.present();
+
   }
 
   items = [
@@ -42,4 +101,9 @@ export class TreinamentoPage {
     console.log("Selected Item", item);
   }
 
+}
+
+export class treino{
+  email: any;
+  treino: any;
 }
