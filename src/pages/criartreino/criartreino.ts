@@ -24,7 +24,7 @@ export class CriartreinoPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CriartreinoPage');
-this.lista(this.restProvider.treinoTeste);
+    this.lista(this.restProvider.treino);
   }
 
   salvar() {
@@ -65,48 +65,89 @@ this.lista(this.restProvider.treinoTeste);
 
   }
 
-  lista(teste: any){
-    switch (teste) {
-      case "Braço":
+  lista(treino: any) {
+    switch (treino) {
+      case "Peito":
         this.itens = [
           'Supino Reto',
-          'Remada Sentado',
-          'Cadeira Extensora',
-          'Rosca Inversa',
-          'Corda',
-          'Elevação Frontal'
+          'Supino Inclinado',
+          'Supino Declinado',
+          'Crucifixo',
+          'Bulover',
+          'Voador'
         ]
         break;
 
       case "Costa":
         this.itens = [
-          'Remada Sentado',
-          'Cadeira Extensora',
-          'Rosca Inversa',
-          'Corda',
-          'Elevação Frontal'
+          'Barra Fixa',
+          'Remada Serrote',
+          'Remada Curvada',
+          'Remada Triangulo',
+          'Puxador Costas',
+          'Puxador Frente',
+          'Puxador Cavalinho',
+          'Remo cavalinho'
         ]
         break;
 
-      case "Perna":
+      case "Bíceps":
+        this.itens = [
+          'Rosca Direta',
+          'Rosca no Scott',
+          'Rosca Alternada',
+          'Rosca Concentrada'
+        ]
+        break;
+
+      case "Pernas":
+        this.itens = [
+          'Panturilha 4 Vertical',
+          'Panturrilha em Pé'
+        ]
+        break;
+
+      case "Ombros":
+        this.itens = [
+          'Desenv. de Ombro',
+          'Elevação Lateral',
+          'Elevação Frontal',
+          'Crucifixo Inverso',
+          'Elevada Baixa',
+          'Encolhimento de Ombro'
+        ]
+        break;
+
+      case "Tríceps":
+        this.itens = [
+          'Tríceps Testa',
+          'Tríceps Coice',
+          'Tríceps Cabo',
+          'Tríceps Corda'
+        ]
+        break;
+
+      case "Abdomen":
+        this.itens = [
+          'Elevação de Perna',
+          'Abdominal',
+          'Rotação de Tronco',
+          'Flexão Lateral de Tronco',
+          'Extensão Lateral'
+        ]
+        break;
+
+      case "Glúteo":
         this.itens = [
           'Agachamento',
-          'Remada Sentado',
-          'Cadeira Extensora',
-          'Rosca Inversa',
-          'Corda',
-          'Elevação Frontal'
-        ]
-        break;
-
-      case "Abdomem":
-        this.itens = [
-          'Abdominal',
-          'Remada Sentado',
-          'Cadeira Extensora',
-          'Rosca Inversa',
-          'Corda',
-          'Elevação Frontal'
+          '4 Apoio Adutora',
+          'Leg Press',
+          'Extensora',
+          'Avanço',
+          'Flexora Deitada',
+          'Flexora em Pé',
+          'Abdutora',
+          'Afudo'
         ]
         break;
 
@@ -142,16 +183,16 @@ this.lista(this.restProvider.treinoTeste);
         {
           text: 'Salvar',
           handler: data => {
-            
-            var exercicios : string[] = [item, data.repeticao, data.carga, this.restProvider.emailValid];
-    
+
+            var exercicios: string[] = [item, data.repeticao, data.carga, this.restProvider.emailValid, this.restProvider.treino];
+
             this.restProvider.createExercicio(exercicios)
-            .then((result: any) => {
-              this.toast.create({ message: 'Exercício cadastrado com sucesso!', position: 'botton', duration: 3000 }).present();
-            })
-            .catch((error: any) => {
-              this.toast.create({ message: 'Erro ao Logar: ' + error, position: 'botton', duration: 5000 }).present();
-            })
+              .then((result: any) => {
+                this.toast.create({ message: 'Exercício cadastrado com sucesso!', position: 'botton', duration: 3000 }).present();
+              })
+              .catch((error: any) => {
+                this.toast.create({ message: 'Erro ao Logar: ' + error, position: 'botton', duration: 5000 }).present();
+              })
           }
         }
       ]

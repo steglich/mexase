@@ -36,8 +36,8 @@ export class TreinamentoPage {
       inputs: [
         {
           type: "radio",
-          label: "Braço",
-          value: "Braço"
+          label: "Peito",
+          value: "Peito"
         },
         {
           type: "radio",
@@ -46,13 +46,33 @@ export class TreinamentoPage {
         },
         {
           type: "radio",
-          label: "Perna",
-          value: "Perna"
+          label: "Bíceps",
+          value: "Bíceps"
         },
         {
           type: "radio",
-          label: "Abdomem",
-          value: "Abdomem"
+          label: "Pernas",
+          value: "Pernas"
+        },
+        {
+          type: "radio",
+          label: "Ombros",
+          value: "Ombros"
+        },
+        {
+          type: "radio",
+          label: "Tríceps",
+          value: "Tríceps"
+        },
+        {
+          type: "radio",
+          label: "Abdomen",
+          value: "Abdomen"
+        },
+        {
+          type: "radio",
+          label: "Glúteo",
+          value: "Glúteo"
         },
       ],
       buttons: [
@@ -73,7 +93,7 @@ export class TreinamentoPage {
             this.restProvider.createTreino(treinos)
             .then((result: any) => {
               this.toast.create({ message: 'Treino cadastrado com sucesso!', position: 'botton', duration: 3000 }).present();
-              this.restProvider.treinoTeste = data;
+              this.restProvider.treino = data;
               this.navCtrl.setRoot(CriartreinoPage);
             })
             .catch((error: any) => {

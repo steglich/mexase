@@ -15,7 +15,7 @@ export class RestProvider {
   public apiUrl = 'http://localhost:57896/api/';
 
   public emailValid: string;
-  public treinoTeste: string;
+  public treino: string;
 
   constructor(public http: Http) {
   }
@@ -212,7 +212,8 @@ export class RestProvider {
           "exercicio": exercicios[0],
           "repeticao": exercicios[1],
           "carga": exercicios[2],
-          "email": exercicios[3]
+          "email": exercicios[3],
+          "treino": exercicios[4]
         };
   
         this.http.post(this.apiUrl + 'evolucaoTreino/create', data)
