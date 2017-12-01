@@ -16,6 +16,9 @@ export class RestProvider {
 
   public emailValid: string;
   public treino: string;
+  public exercicio: any;
+  public evolucao: any;
+  public tempo: number;
 
   constructor(public http: Http) {
   }
@@ -201,6 +204,22 @@ export class RestProvider {
         })
     });
   }
+
+  getTreino(email: any) {
+    return new Promise((resolve, reject) => {
+      var data = {
+        "email": email
+      };
+      
+      this.http.post(this.apiUrl + 'treino/data', data)
+        .subscribe((result: any) => {
+          resolve(result.json())
+        },
+        (error) => {
+          reject(error.json());
+        })
+    });
+  }
   
   
     /*#################################################################### Exercicio ##################################################*/
@@ -225,5 +244,39 @@ export class RestProvider {
           })
       });
     }
+    
+      getExercicio(email: any, treino: any) {
+        return new Promise((resolve, reject) => {
+          var data = {
+            "email": email,
+            "dsTreino": treino
+          };
+          
+          this.http.post(this.apiUrl + 'exercicio/email', data)
+            .subscribe((result: any) => {
+              resolve(result.json())
+            },
+            (error) => {
+              reject(error.json());
+            })
+        });
+      }
+      
+        getEvelucao(email: any, evolucao: any) {
+          return new Promise((resolve, reject) => {
+            var datas = {
+              "email": email,
+              "exercicio": evolucao
+            };
+            
+            this.http.post(this.apiUrl + 'evolucao/data', datas)
+              .subscribe((result: any) => {
+                resolve(result.json())
+              },
+              (error) => {
+                reject(error.json());
+              })
+          });
+        }
 
 }

@@ -8,9 +8,10 @@ import { IonicPage, NavController, NavParams, AlertController, ToastController }
  * Ionic pages and navigation.
  */
 
-import {VisualizartreinoPage} from "../visualizarTreino/visualizarTreino";
-import {CriartreinoPage} from "../criartreino/criartreino";
+//import { VisualizartreinoPage } from "../visualizarTreino/visualizarTreino";
+import { CriartreinoPage } from "../criartreino/criartreino";
 import { RestProvider } from '../../providers/rest/rest';
+import { ExecutartreinoPage } from "../executartreino/executartreino";
 
 @IonicPage()
 @Component({
@@ -19,16 +20,19 @@ import { RestProvider } from '../../providers/rest/rest';
 })
 export class TreinamentoPage {
   model: treino;
+ itens: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController,
-    public restProvider: RestProvider, public toast: ToastController,) {
+    public restProvider: RestProvider, public toast: ToastController, ) {
+      var email =this.restProvider.emailValid;
+      this.itens = this.restProvider.getTreino(email);
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad TreinamentoPage');
   }
 
-  criartreino(){
+  criartreino() {
 
     let prompt = this.alertCtrl.create({
       title: "Treino",
@@ -88,18 +92,18 @@ export class TreinamentoPage {
             //console.log('Teste Radio: ', data);
             //this.model.treino = data;
 
-            var treinos : string[] = [data, this.restProvider.emailValid];
+            var treinos: string[] = [data, this.restProvider.emailValid];
 
             this.restProvider.createTreino(treinos)
-            .then((result: any) => {
-              this.toast.create({ message: 'Treino cadastrado com sucesso!', position: 'botton', duration: 3000 }).present();
-              this.restProvider.treino = data;
-              this.navCtrl.setRoot(CriartreinoPage);
-            })
-            .catch((error: any) => {
-              this.toast.create({ message: 'Erro ao Logar: ' + error, position: 'botton', duration: 5000 }).present();
-            })
-            
+              .then((result: any) => {
+                this.toast.create({ message: 'Treino cadastrado com sucesso!', position: 'botton', duration: 3000 }).present();
+                this.restProvider.treino = data;
+                this.navCtrl.setRoot(CriartreinoPage);
+              })
+              .catch((error: any) => {
+                this.toast.create({ message: 'Erro ao Logar: ' + error, position: 'botton', duration: 5000 }).present();
+              })
+
           }
         }
       ]
@@ -108,22 +112,16 @@ export class TreinamentoPage {
 
   }
 
-  items = [
-    'Treino A',
-    'Treino B',
-    'Treino C'
-  ];
-
   itemSelected(item: string) { // lista de exercícios
+this.restProvider.exercicio = item;
+    this.navCtrl.setRoot(ExecutartreinoPage);
 
-    this.navCtrl.setRoot(VisualizartreinoPage);
-
-    console.log("Selected Item", item);
+    console.log("Selected Item", this.restProvider.exercicio);
   }
 
 }
 
-export class treino{
+export class treino {
   email: any;
   treino: any;
 }

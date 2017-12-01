@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
 
 /**
  * Generated class for the VisualizartreinoPage page.
@@ -9,6 +9,7 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
  */
 
 import { TreinamentoPage } from "../treinamento/treinamento";
+import { RestProvider } from '../../providers/rest/rest';
 
 @IonicPage()
 @Component({
@@ -16,8 +17,12 @@ import { TreinamentoPage } from "../treinamento/treinamento";
   templateUrl: 'visualizartreino.html',
 })
 export class VisualizartreinoPage {
+  itens: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController,
+    public restProvider: RestProvider, public toast: ToastController, ) {
+      var email =this.restProvider.emailValid;
+      this.itens = this.restProvider.getTreino(email);
   }
 
   ionViewDidLoad() {
@@ -68,7 +73,6 @@ export class VisualizartreinoPage {
   ];
 
   itemSelected(item: string) { // lista de exercícios
-
     let prompt = this.alertCtrl.create({
       title: item,
       message: "Insira o número de repetições do exercício e a quantidade de peso.",

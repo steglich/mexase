@@ -9,9 +9,7 @@ import { WelcomePage } from '../pages/welcome/welcome';
 import { UsuarioPage } from '../pages/usuario/usuario';
 import { FichaPage } from '../pages/ficha/ficha';
 import { TreinamentoPage } from '../pages/treinamento/treinamento';
-import { ComecartreinoPage } from "../pages/comecartreino/comecartreino";
 import { DesenvolvimentoPage } from "../pages/desenvolvimento/desenvolvimento";
-import { LoginPage } from "../pages/login/login";
 
 @Component({
   templateUrl: 'app.html'
@@ -33,7 +31,6 @@ export class MyApp {
       { title: 'Usuário', component: UsuarioPage },
       { title: 'Ficha de Avaliação', component: FichaPage },
       { title: 'Treinamento', component: TreinamentoPage },
-      { title: 'Ir para Treino', component: ComecartreinoPage },
       { title: 'Desenvolvimento', component: DesenvolvimentoPage },      
       { title: 'Sair', component: WelcomePage }
     ];

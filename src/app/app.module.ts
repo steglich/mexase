@@ -11,7 +11,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 
 import { WelcomePage } from '../pages/welcome/welcome';
-import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { UsuarioPage } from '../pages/usuario/usuario';
 import { FichaPage } from '../pages/ficha/ficha';
@@ -20,7 +19,6 @@ import { VisualizarfichaPage } from '../pages/visualizarficha/visualizarficha';
 import { TreinamentoPage } from '../pages/treinamento/treinamento';
 import { CriartreinoPage } from "../pages/criartreino/criartreino";
 import { VisualizartreinoPage } from "../pages/visualizarTreino/visualizarTreino";
-import { ComecartreinoPage } from "../pages/comecartreino/comecartreino";
 import { ExecutartreinoPage } from "../pages/executartreino/executartreino";
 import { CronometroPage } from "../pages/cronometro/cronometro";
 import { DesenvolvimentoPage } from "../pages/desenvolvimento/desenvolvimento";
@@ -38,7 +36,6 @@ import { HttpModule } from '@angular/http';
     WelcomePage,
     HomePage,
     ListPage,
-    LoginPage,
     RegisterPage,
     UsuarioPage,
     FichaPage,
@@ -47,7 +44,6 @@ import { HttpModule } from '@angular/http';
     TreinamentoPage,
     CriartreinoPage,
     VisualizartreinoPage,
-    ComecartreinoPage,
     ExecutartreinoPage,
     CronometroPage,
     DesenvolvimentoPage,
@@ -65,7 +61,6 @@ import { HttpModule } from '@angular/http';
     WelcomePage,
     HomePage,
     ListPage,
-    LoginPage,
     RegisterPage,
     UsuarioPage,
     FichaPage,
@@ -74,7 +69,6 @@ import { HttpModule } from '@angular/http';
     TreinamentoPage,
     CriartreinoPage,
     VisualizartreinoPage,
-    ComecartreinoPage,
     ExecutartreinoPage,
     CronometroPage,
     DesenvolvimentoPage,
