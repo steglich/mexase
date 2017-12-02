@@ -20,6 +20,9 @@ export class RestProvider {
   public evolucao: any;
   public tempo: number;
 
+  public lineChartData: Array<any> = [];
+  public lineChartLabels: Array<any> = [];
+
   constructor(public http: Http) {
   }
 
@@ -107,23 +110,23 @@ export class RestProvider {
   createFicha(ficha: any) {
     return new Promise((resolve, reject) => {
       //for (var i = 0; i < 1; i++) {
-        var data = {
-          "peso": ficha[0],
-          "altura": ficha[1],
-          "gordura": ficha[2],
-          "peito": ficha[3],
-          "cintura": ficha[4],
-          "quadril": ficha[5],
-          'anteBracoDireito': ficha[6],
-          "anteBracoEsquerdo": ficha[7],
-          "bracoDireito": ficha[8],
-          "bracoEsquerdo": ficha[9],
-          "coxaDireita": ficha[10],
-          "coxaEsquerda": ficha[11],
-          "pantuDireita": ficha[12],
-          "pantuEsquerda": ficha[13],
-          "reavaliacao": ficha[14],
-          "email": ficha[15]
+      var data = {
+        "peso": ficha[0],
+        "altura": ficha[1],
+        "gordura": ficha[2],
+        "peito": ficha[3],
+        "cintura": ficha[4],
+        "quadril": ficha[5],
+        'anteBracoDireito': ficha[6],
+        "anteBracoEsquerdo": ficha[7],
+        "bracoDireito": ficha[8],
+        "bracoEsquerdo": ficha[9],
+        "coxaDireita": ficha[10],
+        "coxaEsquerda": ficha[11],
+        "pantuDireita": ficha[12],
+        "pantuEsquerda": ficha[13],
+        "reavaliacao": ficha[14],
+        "email": ficha[15]
       };
 
       this.http.post(this.apiUrl + 'ficha/create/avaliacao', data)
@@ -151,39 +154,71 @@ export class RestProvider {
         })
     });
   }
-  
-    updateFicha(ficha: any) {
-      return new Promise((resolve, reject) => {
-  
-        var data = {
-          "peso": ficha[0],
-          "altura": ficha[1],
-          "gordura": ficha[2],
-          "peito": ficha[3],
-          "cintura": ficha[4],
-          "quadril": ficha[5],
-          'anteBracoDireito': ficha[6],
-          "anteBracoEsquerdo": ficha[7],
-          "bracoDireito": ficha[8],
-          "bracoEsquerdo": ficha[9],
-          "coxaDireita": ficha[10],
-          "coxaEsquerda": ficha[11],
-          "pantuDireita": ficha[12],
-          "pantuEsquerda": ficha[13],
-          "reavaliacao": ficha[14],
-          "email": ficha[15]
+
+  getAllFicha(email: string) {
+    return new Promise((resolve, reject) => {
+      var data = {
+        email: email
       };
-  
-        this.http.put(this.apiUrl + 'ficha/update', data)
-          .subscribe((result: any) => {
-            resolve(result.json())
-            //this.emailValid = result.email;
-          },
-          (error) => {
-            reject(error.json());
-          })
-      });
-    }
+
+      this.http.post(this.apiUrl + 'ficha/all', data)
+        .subscribe((result: any) => {
+          resolve(result.json());
+        },
+        (error) => {
+          reject(error.json());
+        })
+    });
+  }
+
+  getAllAvaliacao(email: string) {
+    return new Promise((resolve, reject) => {
+      var data = {
+        email: email
+      };
+
+      this.http.post(this.apiUrl + 'avaliacao/all', data)
+        .subscribe((result: any) => {
+          resolve(result.json());
+        },
+        (error) => {
+          reject(error.json());
+        })
+    });
+  }
+
+  updateFicha(ficha: any) {
+    return new Promise((resolve, reject) => {
+
+      var data = {
+        "peso": ficha[0],
+        "altura": ficha[1],
+        "gordura": ficha[2],
+        "peito": ficha[3],
+        "cintura": ficha[4],
+        "quadril": ficha[5],
+        'anteBracoDireito': ficha[6],
+        "anteBracoEsquerdo": ficha[7],
+        "bracoDireito": ficha[8],
+        "bracoEsquerdo": ficha[9],
+        "coxaDireita": ficha[10],
+        "coxaEsquerda": ficha[11],
+        "pantuDireita": ficha[12],
+        "pantuEsquerda": ficha[13],
+        "reavaliacao": ficha[14],
+        "email": ficha[15]
+      };
+
+      this.http.put(this.apiUrl + 'ficha/update', data)
+        .subscribe((result: any) => {
+          resolve(result.json())
+          //this.emailValid = result.email;
+        },
+        (error) => {
+          reject(error.json());
+        })
+    });
+  }
 
 
   /*#################################################################### Treino ##################################################*/
@@ -210,7 +245,7 @@ export class RestProvider {
       var data = {
         "email": email
       };
-      
+
       this.http.post(this.apiUrl + 'treino/data', data)
         .subscribe((result: any) => {
           resolve(result.json())
@@ -220,63 +255,63 @@ export class RestProvider {
         })
     });
   }
-  
-  
-    /*#################################################################### Exercicio ##################################################*/
-  
 
-    createExercicio(exercicios: any) {
-      return new Promise((resolve, reject) => {
-        var data = {
-          "exercicio": exercicios[0],
-          "repeticao": exercicios[1],
-          "carga": exercicios[2],
-          "email": exercicios[3],
-          "treino": exercicios[4]
-        };
-  
-        this.http.post(this.apiUrl + 'evolucaoTreino/create', data)
-          .subscribe((result: any) => {
-            resolve(result.json())
-          },
-          (error) => {
-            reject(error.json());
-          })
-      });
-    }
-    
-      getExercicio(email: any, treino: any) {
-        return new Promise((resolve, reject) => {
-          var data = {
-            "email": email,
-            "dsTreino": treino
-          };
-          
-          this.http.post(this.apiUrl + 'exercicio/email', data)
-            .subscribe((result: any) => {
-              resolve(result.json())
-            },
-            (error) => {
-              reject(error.json());
-            })
-        });
-      }
-      
-        getEvelucao(email: any, evolucao: any) {
-          return new Promise((resolve, reject) => {
-            var datas = {
-              "email": email,
-              "exercicio": evolucao
-            };
-            
-            this.http.post(this.apiUrl + 'evolucao/data', datas)
-              .subscribe((result: any) => {
-                resolve(result.json())
-              },
-              (error) => {
-                reject(error.json());
-              })
-          });
-        }
+
+  /*#################################################################### Exercicio ##################################################*/
+
+
+  createExercicio(exercicios: any) {
+    return new Promise((resolve, reject) => {
+      var data = {
+        "exercicio": exercicios[0],
+        "repeticao": exercicios[1],
+        "carga": exercicios[2],
+        "email": exercicios[3],
+        "treino": exercicios[4]
+      };
+
+      this.http.post(this.apiUrl + 'evolucaoTreino/create', data)
+        .subscribe((result: any) => {
+          resolve(result.json())
+        },
+        (error) => {
+          reject(error.json());
+        })
+    });
+  }
+
+  getExercicio(email: any, treino: any) {
+    return new Promise((resolve, reject) => {
+      var data = {
+        "email": email,
+        "dsTreino": treino
+      };
+
+      this.http.post(this.apiUrl + 'exercicio/email', data)
+        .subscribe((result: any) => {
+          resolve(result.json())
+        },
+        (error) => {
+          reject(error.json());
+        })
+    });
+  }
+
+  getEvelucao(email: any, evolucao: any) {
+    return new Promise((resolve, reject) => {
+      var datas = {
+        "email": email,
+        "exercicio": evolucao
+      };
+
+      this.http.post(this.apiUrl + 'evolucao/data', datas)
+        .subscribe((result: any) => {
+          resolve(result.json())
+        },
+        (error) => {
+          reject(error.json());
+        })
+    });
+  }
 
 }

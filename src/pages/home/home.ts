@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import { NavController, MenuController } from 'ionic-angular';
 
+import { RestProvider } from '../../providers/rest/rest';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
+  model: fichas;
 
   eventSource;
   viewTitle;
@@ -16,8 +18,11 @@ export class HomePage {
     currentDate: new Date()
   }
 
-  constructor(public navCtrl: NavController, public menuCtrl: MenuController) {
+  constructor(public navCtrl: NavController, public menuCtrl: MenuController, public restProvider: RestProvider) {
     this.menuCtrl.enable(true, 'myMenu');
+    this.model = new fichas();
+    this.getAllFichas(this.restProvider.emailValid);
+    this.getAllAval(this.restProvider.emailValid);
 
   }
 
@@ -91,4 +96,36 @@ export class HomePage {
     return date < current;
   };
 
+
+
+  getAllFichas(emails: string) {
+    this.restProvider.getAllFicha(emails)
+      .then((result: any) => {
+        this.model.ficha = result;
+        for (var i = 0; i < this.model.ficha.length; i++) {
+          this.restProvider.lineChartData[i] = this.model.ficha[i].peso;
+        }
+
+
+      })
+  }
+
+  getAllAval(email: string) {
+    this.restProvider.getAllAvaliacao(email)
+      .then((result: any) => {
+        this.model.avaliacao = result;
+        for (var i = 0; i < this.model.avaliacao.length; i++) {
+          this.restProvider.lineChartLabels[i] = this.model.avaliacao[i].dtAvaliacao;
+        }
+
+
+      })
+  }
+
+}
+
+
+export class fichas {
+  ficha: any[];
+  avaliacao: any[];
 }

@@ -22,7 +22,7 @@ export class AcessarPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder,
     public restProvider: RestProvider, public toast: ToastController, public menuCtrl: MenuController) {
-      this.menuCtrl.enable(true, 'myMenu');
+      this.menuCtrl.enable(false, 'myMenu');
       this.model = new User();
 
     this.todo = this.formBuilder.group({

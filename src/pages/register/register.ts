@@ -52,7 +52,7 @@ export class RegisterPage {
     .then((result: any) => {
       this.navCtrl.setRoot(CriarfichaPage);
       this.restProvider.emailValid = this.model.email;
-       this.toast.create({ message: 'Ususário cadastrado com sucesso!' + this.restProvider.emailValid, position: 'botton', duration: 3000 }).present();
+       this.toast.create({ message: 'Ususário cadastrado com sucesso!', position: 'botton', duration: 3000 }).present();
     })
     .catch((error: any) => {
         this.toast.create({ message: error , position: 'botton', duration: 5000 }).present();

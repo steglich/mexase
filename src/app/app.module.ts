@@ -30,6 +30,8 @@ import { RestProvider } from '../providers/rest/rest';
 import 'rxjs/add/operator/map';
 import { HttpModule } from '@angular/http';
 
+import { ChartsModule } from 'ng2-charts';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -53,6 +55,7 @@ import { HttpModule } from '@angular/http';
     BrowserModule,
     NgCalendarModule,
     HttpModule,
+    ChartsModule,
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],

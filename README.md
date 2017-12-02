@@ -1,26 +1,10 @@
-This is a starter template for [Ionic](http://ionicframework.com/docs/) projects.
+## Projeto desenvolvido para defesa de monografia
 
-## How to use this template
+Este projeto foi desenvolvido com o âmbito de defender a monografia para conclusão de curso de bacharel em sistemas de informação.
 
-*This template does not work on its own*. The shared files for each starter are found in the [ionic2-app-base repo](https://github.com/ionic-team/ionic2-app-base).
+O desenvolvimento do projeto norteia-se no trabalho de desenvolver um aplicativo que possibilite, ao praticante de atividade física, a possibilidade de acompanhar seu rendimento, histórico e a programação de treinos em um determinado período.
 
-To use this template, either create a new ionic project using the ionic node.js utility, or copy the files from this repository into the [Starter App Base](https://github.com/ionic-team/ionic2-app-base).
+### Tecnologias utilizadas para o desenvolvimento da aplicação:
 
-### With the Ionic CLI:
-
-Take the name after `ionic2-starter-`, and that is the name of the template to be used when using the `ionic start` command below:
-
-```bash
-$ sudo npm install -g ionic cordova
-$ ionic start mySideMenu sidemenu
-```
-
-Then, to run it, cd into `mySideMenu` and run:
-
-```bash
-$ ionic cordova platform add ios
-$ ionic cordova run ios
-```
-
-Substitute ios for android if not on a Mac.
+O desenvolvido em duas partes o [back-end](https://github.com/steglich/MEXA_SE) e front-end, onde este este e o front-end que foi utilizado o Visual code, as tecnologias empregadas foram o ionic3 juntamente com o Angular2/4 e Json para interar a comunicação com a Api.
 

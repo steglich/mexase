@@ -53,7 +53,7 @@ export class ExecutartreinoPage {
             this.restProvider.tempo = data.tempo;
             console.log('Saved clicked');
             this.restProvider.evolucao = item;
-            this.navCtrl.push(CronometroPage);
+            this.navCtrl.setRoot(CronometroPage);
           }
         }
       ]
